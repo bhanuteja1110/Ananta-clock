@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Luxury Word Clock</title>
+
+<style>
+  :root {
+    --bg: #0b0b0d;
+    --panel: #111114;
+    --dim: #2c2c30;
+    --glow: #ffffff;
+    --gold: #c9a24d;
+  }
+
+  * {
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #1b1b20, var(--bg));
+    display: grid;
+    place-items: center;
+    padding: 14px;
+  }
+
+  .clock {
+    background: linear-gradient(145deg, #141418, #0c0c0f);
+    padding: clamp(18px, 4vw, 26px);
+    border-radius: 18px;
+    box-shadow: 0 35px 90px rgba(0,0,0,0.7);
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    gap: clamp(4px, 1.5vw, 8px);
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    user-select: none;
+    font-size: clamp(12px, 3.2vw, 15px);
+  }
+
+  .letter {
+    color: var(--dim);
+    transition: color 0.4s ease, text-shadow 0.4s ease;
+  }
+
+  .active {
+    color: var(--glow);
+    text-shadow:
+      0 0 8px rgba(255,255,255,0.6),
+      0 0 18px rgba(201,162,77,0.6);
+  }
+
+  .controls {
+    margin-top: clamp(16px, 4vw, 22px);
+    display: flex;
+    justify-content: center;
+  }
+
+  button {
+    background: linear-gradient(135deg, #c9a24d, #e8c875);
+    border: none;
+    padding: clamp(9px, 3vw, 12px) clamp(16px, 5vw, 20px);
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #000;
+    font-size: clamp(13px, 3.5vw, 15px);
+  }
+
+  button:active {
+    transform: scale(0.97);
+  }
+
+  .brand {
+    margin-top: clamp(10px, 3vw, 14px);
+    text-align: center;
+    font-size: clamp(9px, 2.5vw, 11px);
+    letter-spacing: 0.15em;
+    color: #666;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="clock">
+
+  <div class="grid">
+    <span class="letter" data-word="IT">I</span>
+    <span class="letter" data-word="IT">T</span>
+    <span></span>
+    <span class="letter" data-word="IS">I</span>
+    <span class="letter" data-word="IS">S</span>
+
+    <span class="letter" data-word="A">A</span>
+    <span class="letter" data-word="QUARTER">Q</span>
+    <span class="letter" data-word="QUARTER">U</span>
+    <span class="letter" data-word="QUARTER">A</span>
+    <span class="letter" data-word="QUARTER">R</span>
+    <span class="letter" data-word="QUARTER">T</span>
+    <span class="letter" data-word="QUARTER">E</span>
+    <span class="letter" data-word="QUARTER">R</span>
+
+    <span class="letter" data-word="TWENTY">T</span>
+    <span class="letter" data-word="TWENTY">W</span>
+    <span class="letter" data-word="TWENTY">E</span>
+    <span class="letter" data-word="TWENTY">N</span>
+    <span class="letter" data-word="TWENTY">T</span>
+    <span class="letter" data-word="TWENTY">Y</span>
+    <span></span>
+    <span class="letter" data-word="FIVE">F</span>
+    <span class="letter" data-word="FIVE">I</span>
+    <span class="letter" data-word="FIVE">V</span>
+    <span class="letter" data-word="FIVE">E</span>
+
+    <span class="letter" data-word="HALF">H</span>
+    <span class="letter" data-word="HALF">A</span>
+    <span class="letter" data-word="HALF">L</span>
+    <span class="letter" data-word="HALF">F</span>
+    <span></span>
+    <span class="letter" data-word="TEN">T</span>
+    <span class="letter" data-word="TEN">E</span>
+    <span class="letter" data-word="TEN">N</span>
+    <span></span>
+    <span class="letter" data-word="TO">T</span>
+    <span class="letter" data-word="TO">O</span>
+
+    <span class="letter" data-word="PAST">P</span>
+    <span class="letter" data-word="PAST">A</span>
+    <span class="letter" data-word="PAST">S</span>
+    <span class="letter" data-word="PAST">T</span>
+    <span></span>
+    <span class="letter" data-word="ONE">O</span>
+    <span class="letter" data-word="ONE">N</span>
+    <span class="letter" data-word="ONE">E</span>
+
+    <span class="letter" data-word="TWO">T</span>
+    <span class="letter" data-word="TWO">W</span>
+    <span class="letter" data-word="TWO">O</span>
+    <span></span>
+    <span class="letter" data-word="THREE">T</span>
+    <span class="letter" data-word="THREE">H</span>
+    <span class="letter" data-word="THREE">R</span>
+    <span class="letter" data-word="THREE">E</span>
+    <span class="letter" data-word="THREE">E</span>
+
+    <span class="letter" data-word="FOUR">F</span>
+    <span class="letter" data-word="FOUR">O</span>
+    <span class="letter" data-word="FOUR">U</span>
+    <span class="letter" data-word="FOUR">R</span>
+    <span></span>
+    <span class="letter" data-word="FIVE_H">F</span>
+    <span class="letter" data-word="FIVE_H">I</span>
+    <span class="letter" data-word="FIVE_H">V</span>
+    <span class="letter" data-word="FIVE_H">E</span>
+
+    <span class="letter" data-word="SIX">S</span>
+    <span class="letter" data-word="SIX">I</span>
+    <span class="letter" data-word="SIX">X</span>
+    <span></span>
+    <span class="letter" data-word="SEVEN">S</span>
+    <span class="letter" data-word="SEVEN">E</span>
+    <span class="letter" data-word="SEVEN">V</span>
+    <span class="letter" data-word="SEVEN">E</span>
+    <span class="letter" data-word="SEVEN">N</span>
+
+    <span class="letter" data-word="EIGHT">E</span>
+    <span class="letter" data-word="EIGHT">I</span>
+    <span class="letter" data-word="EIGHT">G</span>
+    <span class="letter" data-word="EIGHT">H</span>
+    <span class="letter" data-word="EIGHT">T</span>
+    <span></span>
+    <span class="letter" data-word="NINE">N</span>
+    <span class="letter" data-word="NINE">I</span>
+    <span class="letter" data-word="NINE">N</span>
+    <span class="letter" data-word="NINE">E</span>
+
+    <span class="letter" data-word="TEN_H">T</span>
+    <span class="letter" data-word="TEN_H">E</span>
+    <span class="letter" data-word="TEN_H">N</span>
+    <span></span>
+    <span class="letter" data-word="ELEVEN">E</span>
+    <span class="letter" data-word="ELEVEN">L</span>
+    <span class="letter" data-word="ELEVEN">E</span>
+    <span class="letter" data-word="ELEVEN">V</span>
+    <span class="letter" data-word="ELEVEN">E</span>
+    <span class="letter" data-word="ELEVEN">N</span>
+  </div>
+
+  <div class="controls">
+    <button onclick="showWordTime()">Show Time</button>
+  </div>
+
+  <div class="brand">DESIGNED BY ANANTA</div>
+</div>
+
+<script>
+  const letters = document.querySelectorAll('.letter');
+  let hideTimeout = null;
+
+  function clearAll() {
+    letters.forEach(l => l.classList.remove('active'));
+  }
+
+  function light(word) {
+    letters.forEach(l => {
+      if (l.dataset.word === word) l.classList.add('active');
+    });
+  }
+
+  function showWordTime() {
+    clearAll();
+    light("IT");
+    light("IS");
+
+    const now = new Date();
+    let hour = now.getHours() % 12 || 12;
+    const minute = now.getMinutes();
+
+    if (minute >= 35) hour = (hour % 12) + 1;
+
+    if (minute < 5) {}
+    else if (minute < 10) { light("FIVE"); light("PAST"); }
+    else if (minute < 15) { light("TEN"); light("PAST"); }
+    else if (minute < 20) { light("QUARTER"); light("PAST"); }
+    else if (minute < 25) { light("TWENTY"); light("PAST"); }
+    else if (minute < 30) { light("TWENTY"); light("FIVE"); light("PAST"); }
+    else if (minute < 35) { light("HALF"); light("PAST"); }
+    else if (minute < 40) { light("TWENTY"); light("FIVE"); light("TO"); }
+    else if (minute < 45) { light("TWENTY"); light("TO"); }
+    else if (minute < 50) { light("QUARTER"); light("TO"); }
+    else if (minute < 55) { light("TEN"); light("TO"); }
+    else { light("FIVE"); light("TO"); }
+
+    const hours = {
+      1:"ONE",2:"TWO",3:"THREE",4:"FOUR",5:"FIVE_H",6:"SIX",
+      7:"SEVEN",8:"EIGHT",9:"NINE",10:"TEN_H",11:"ELEVEN",12:"TWELVE"
+    };
+
+    light(hours[hour]);
+
+    if (hideTimeout) clearTimeout(hideTimeout);
+    hideTimeout = setTimeout(clearAll, 10000);
+  }
+</script>
+
+</body>
+</html>
